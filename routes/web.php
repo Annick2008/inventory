@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ItemController;
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -8,52 +10,17 @@ Route::get('/', function () {
 });
 */
 
-Route::get('/', function() {
-    return "Hallo, Welt!";
-});
+Route::get('/', [PageController::class, 'index']);
 
-Route::get('/about', function() {
-   return "<html><title>About</title><body><h1>About me</h1></body></html>";
-});
+Route::get('/me', [PageController::class, 'me']);
 
-Route::get('/me', function() {
-    return view('test');
-});
+Route::get('/impressum', [PageController::class, 'imp']);
 
-Route::get('/impressum', function(){
-    return view('impressum');
-});
+Route::get('/seite', [PageController::class, 'about']);
 
-Route::get('/seite', function(){
-    return view('about');
-});
-
-Route::get('/imp', function() {
-    $vorname = 'Max';
-    $nachname = 'Muster';
-    $alter = 17;
-
-    // In der View (imp.blade.php) sind die Variablen vorname, nachname und
-    // age verfügbar. Es beliebige Varibalen weritergereicht werden.
-    return view('imp', [
-        'vorname' => $vorname,
-        'nachname' => $nachname,
-        'age' => $alter
-    ]);
-});
+Route::get('/contact', [PageController::class, 'contact']);
 
 // https://inventory.test/imp/<script>alert('alert');</script>
-Route::get('/imp/{info}', function($info) {
-    $vorname = 'Max';
-    $nachname = 'Muster';
-    $alter = 17;
+Route::get('/imp/{info}', [PageController::class, 'impressum']);
 
-    // In der View (imp.blade.php) sind die Variablen vorname, nachname und
-    // age verfügbar. Es beliebige Varibalen weritergereicht werden.
-    return view('imp', [
-        'vorname' => $vorname,
-        'nachname' => $nachname,
-        'age' => $alter,
-        'info' => "<script>window.top.location = 'https://www.google.at';</script>"
-    ]);
-});
+Route::get('/items', [ItemController::class, 'items']);
