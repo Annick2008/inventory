@@ -23,4 +23,4 @@ Route::get('/contact', [PageController::class, 'contact']);
 // https://inventory.test/imp/<script>alert('alert');</script>
 Route::get('/imp/{info}', [PageController::class, 'impressum']);
 
-Route::get('/items', [ItemController::class, 'items']);
+Route::get('/items', [ItemController::class, 'index']);
