@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ItemController;
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,3 +25,33 @@ Route::get('/me', function() {
 Route::get('/impressum', function(){
     return view('impressum');
 });
+
+Route::get('/overview', function(){
+    return view('overview');
+});
+
+Route::get('/oasch', function(){
+    return view('oasch');
+});
+
+Route::get('/imp', [PageController::class, 'imp']);
+
+Route::get('/imp/{info}', function($info){
+    $vorname='Max';
+    $nachname='Max';
+    $alter=20;
+
+    return view('imp', [
+        'vorname' => $vorname,
+        'nachname' => $nachname,
+        'alter' => $alter,
+        'info' => "Der PC funktioniert perfekt"
+    ]);
+});
+
+Route::get('/impressum/{info}', [PageController::class, 'impressum']);
+
+Route::get('/contact', [PageController::class, 'contact'])
+    ->name('pages.contact');
+
+Route::get('/items', [ItemController::class, 'items']);

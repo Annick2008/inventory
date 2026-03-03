@@ -11,6 +11,10 @@ export default defineConfig({
         tailwindcss(),
     ],
     server: {
+        host: 'inventory.test',
+        hmr: {
+            host: 'inventory.test',
+        },
         watch: {
             ignored: ['**/storage/framework/views/**'],
         },
