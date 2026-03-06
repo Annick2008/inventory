@@ -57,3 +57,5 @@ Route::get('/contact', [PageController::class, 'contact'])
 Route::get('/items', [ItemController::class, 'index']);
 
 Route::get('/student', [\App\Http\Controllers\RandomController::class, 'select']);
+
+Route::get('/students/random', [\App\Http\Controllers\RandomController::class, 'select']);
