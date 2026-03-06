@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\RandomController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,3 +25,5 @@ Route::get('/contact', [PageController::class, 'contact']);
 Route::get('/imp/{info}', [PageController::class, 'impressum']);
 
 Route::get('/items', [ItemController::class, 'index']);
+
+Route::get('student', [RandomController::class, 'select']);
