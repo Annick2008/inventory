@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Item;
 use App\Models\School;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -27,7 +28,13 @@ class DatabaseSeeder extends Seeder
         School::factory(100)->create();
 
         $this->call([
-            SchoolSeeder::class
+            SchoolSeeder::class,
+            RoomSeeder::class,
+            CategorySeeder::class,
         ]);
+
+        Item::factory(200)->create();
+
+
     }
 }

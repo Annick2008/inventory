@@ -54,4 +54,6 @@ Route::get('/impressum/{info}', [PageController::class, 'impressum']);
 Route::get('/contact', [PageController::class, 'contact'])
     ->name('pages.contact');
 
-Route::get('/items', [ItemController::class, 'items']);
+Route::get('/items', [ItemController::class, 'index']);
+
+Route::get('/student', [\App\Http\Controllers\RandomController::class, 'select']);
