@@ -7,14 +7,25 @@ use Nette\Utils\Random;
 
 class RandomController extends Controller
 {
-    public function select(){
+    public function select(Request $request){
 
             // return random_int(1,9);
 
-            $stud = random_int(1,9);
-            return view('students.random', [
-            'stud' => $stud
-        ]);
+            // oder Zugriff auf Request mit request();
 
+            $stud = null;
+
+            if ($request->isMethod('post')){
+                $attributes = $request->validate([
+                    'min' => 'required|integer',
+                    'max' => 'required|integer|gte:min'
+                ]);
+
+                $stud = random_int($attributes['min'], $attributes['max']);
+            }
+
+            return view('students.random', [
+                'stud' => $stud
+            ]);
     }
 }

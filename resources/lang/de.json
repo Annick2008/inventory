@@ -2,5 +2,15 @@
     "Items": "Einträge",
     "Selected student": "Schüler:in ausgewählt",
     "Selected: :student": "Gewählt: :student",
-    ":firstname reached :points points": ":firstname erreichte :points Punkte"
+    ":firstname reached :points points": ":firstname erreichte :points Punkte",
+    "Please select a student": "Bitte wählen sie einen Schüler aus.",
+    "Schools": "Schule",
+    "Add a school to the database": "Fügen Sie eine Schule in ihre Datenbank hinzu.",
+    "name": "Name",
+    "school number": "Schulnummer",
+    "address": "Adresse",
+    "save": "sichern",
+    "Add room to school/database.": "Fügen Sie einen Raum zur Schule/Datenbank hinzu.",
+    "title": "Raum",
+    "school_id": "Schulidentifikationsnummer"
 }
