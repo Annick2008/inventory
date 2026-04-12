@@ -35,11 +35,29 @@ Route::get('/rooms', [RoomController::class, 'index'])
 Route::post('/rooms', [RoomController::class, 'store'])
     ->name('rooms.store')->middleware(['auth']);
 
+Route::delete('/rooms/{room}', [RoomController::class, 'destroy'])
+    ->middleware(['auth'])->name('rooms.destroy');
+
+Route::get('/rooms/{room}/edit', [RoomController::class, 'edit'])
+    ->middleware(['auth'])->name('rooms.edit');
+
+Route::patch('/rooms/{room}', [RoomController::class, 'update'])
+    ->middleware(['auth'])->name('rooms.update');
+
 Route::get('/schools', [SchoolController::class, 'index'])
     ->name('schools')->middleware(['auth']);
 
 Route::post('/schools', [SchoolController::class, 'store'])
     ->name('schools.store')->middleware(['auth']);
+
+Route::delete('/schools/{school}', [SchoolController::class, 'destroy'])
+    ->middleware(['auth'])->name('schools.destroy');
+
+Route::get('/schools/{school}/edit', [SchoolController::class, 'edit'])
+    ->middleware(['auth'])->name('schools.edit');
+
+Route::patch('/schools/{school}', [SchoolController::class, 'update'])
+    ->middleware(['auth'])->name('schools.update');
 
 Route::get('/random', [RandomController::class, 'select'])
     ->name('random')

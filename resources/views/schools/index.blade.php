@@ -7,14 +7,14 @@
 
     <div class="py-12 space-y-6">
 
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 border shadow">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900 dark:text-gray-100">
+                    <x-message/>
 
-            @if (session('success'))
-                <p class="text-green-500">{{ session('success') }}</p>
-            @endif
-
+                </div>
+            </div>
         </div>
-
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
@@ -65,9 +65,28 @@
 
 
                     @foreach($schools as $school)
-                        <div class="border p-3 rounded">
+                        <div class="border p-3 rounded flex justify-between">
                             <h2 class="text-2xl">{{ $school->name }}</h2>
                             <p class="text-gray-500 dark:text-gray-100">{{ $school->address }}</p>
+
+                            <div class="flex space-x-3">
+                                <a href="{{ route('schools.edit', $school->id) }}">
+                                    <x-pencil class="text-indigo-600"/>
+                                    <span class="sr-only">{{ __('Edit school') }}</span>
+                                </a>
+
+                                <form action="{{ route('schools.destroy', $school->id) }}" method="post">
+                                    @method('DELETE')
+                                    @csrf
+
+                                    <button>
+                                        <x-trash class="text-red-600"/>
+                                        <span class="sr-only">{{ __('Remove school') }}</span>
+                                    </button>
+                                </form>
+
+                            </div>
+
                         </div>
                     @endforeach
 

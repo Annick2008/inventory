@@ -32,4 +32,30 @@ class SchoolController extends Controller
         return back()->with('success', __('School saved.'));
 
     }
+
+    public function destroy(School $school){
+        $school->delete();
+
+        return back()->with('success',__('School removed.'));
+    }
+
+    public function edit(School $school){
+        $schools = School::all();
+
+        return view('schools.edit', [
+            'school' => $school
+        ]);
+    }
+
+    public function update(School $school){
+        $attributes = request()->validate([
+            'name' => 'required|min:3|max:64|string',
+            'school_number' => 'required|min:6|max:6|string',
+            'address' => 'required|min:8|max:64|string'
+        ]);
+
+        $school->update($attributes);
+
+        return back()->with('success', __('School saved.'));
+    }
 }

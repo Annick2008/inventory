@@ -12,5 +12,7 @@
     "save": "sichern",
     "Add room to school/database.": "Fügen Sie einen Raum zur Schule/Datenbank hinzu.",
     "title": "Raum",
-    "school_id": "Schulidentifikationsnummer"
+    "school_id": "Schulidentifikationsnummer",
+    "Remove room": "Raum entfernen",
+    "Remove school": "Schule entfernen"
 }

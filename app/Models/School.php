@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Notifications\Notifiable;
 
 class School extends Model
 {
-    /** @use HasFactory<\Database\Factories\SchoolFactory> */
-    use HasFactory;
+    protected $fillable = [
+        'name',
+        'school_number',
+        'address'
+    ];
 }
