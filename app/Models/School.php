@@ -11,4 +11,8 @@ class School extends Model
         'school_number',
         'address'
     ];
+
+    public function users(){
+        return $this->belongsToMany(User::class);
+    }
 }

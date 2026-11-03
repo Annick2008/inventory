@@ -10,6 +10,22 @@ class RoomController extends Controller
 {
     public function index() {
 
+        $schools = auth()->user()->schools;
+
+        $schoolIds = auth()->user()->schools()->pluck('id')->toArray();
+
+
+        // collection, arrays - "paginate" schwierig
+        /*
+        $rooms = Room::all()->filter(function($room) use ($schoolIds){
+            return in_array($room->school_id, $schoolIds);
+        });
+        */
+
+        // eloquent query
+        $rooms = Room::whereIn('school_id', $schoolIds)->paginate(10);
+
+
         $rooms = Room::paginate(10);
         $schools = School::all();
         return view('rooms.index', [

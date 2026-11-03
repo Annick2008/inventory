@@ -77,4 +77,17 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/todos', function() {
+    $todos = [
+        [
+            'userId' => 1,
+            'id' => 1,
+            'title' => 'delectus aut autem',
+            'completed' => false
+        ]
+    ];
+
+    return $todos;
+});
+
 require __DIR__.'/auth.php';

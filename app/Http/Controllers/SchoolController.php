@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\School;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class SchoolController extends Controller
@@ -10,7 +11,25 @@ class SchoolController extends Controller
     public function index(){
         // $schools = School::all();
 
-        $schools = School::paginate(10);
+        $users = User::with('schools')->get();
+
+        $user = auth()->user();
+        // dd($user);
+
+
+        $schools = $user->schools;
+
+        $schul_id = 101;
+
+        // closure
+        $hak = $user->schools->filter(function($school)use ($schul_id){
+            return $school->id == $schul_id;
+        })->first();
+
+        dd($hak);
+
+
+        // $schools = $user->schools()::paginate(10);
         return view('schools.index', [
             'schools' => $schools
         ]);
